@@ -8,4 +8,4 @@ $ npm start
 ```
 
 # Note
-You will need to have [node]{https://nodejs.org/en/download/} installed.
+You will need to have [node](https://nodejs.org/en/download/) installed.
