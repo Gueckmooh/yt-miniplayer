@@ -1,0 +1,14 @@
+{
+    "name": "yt-miniplayer",
+    "version": "1.0.0",
+    "description": "Mini youtube player",
+    "main": "main.js",
+    "scripts": {
+        "start": "electron ."
+    },
+    "author": "Gueckmooh",
+    "license": "ISC",
+    "devDependencies": {
+        "electron": "1.7.8"
+    }
+}
