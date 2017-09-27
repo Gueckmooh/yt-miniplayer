@@ -33,6 +33,11 @@ const filter = {
 
 var youtube_url = 'https://www.youtube.com/'
 
+var vidWidth = 428
+var vidHeight = 250
+
+var vidPos = null
+
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
 let mainWindow
@@ -43,19 +48,27 @@ function createWindow (isVid) {    // Create the browser window.
     var screenElectron = electron.screen;
     var mainScreen = screenElectron.getPrimaryDisplay();
     var dimensions = mainScreen.size;
+    if (vidPos == null) {
+	console.log("lalalilala")
+	vidPos = [
+	    dimensions.width-vidWidth,
+	    dimensions.height-vidHeight
+	]
+    }
+    console.log('vidPos = ' + vidPos)
+
     if (isVid) {
 	vidWindow = new BrowserWindow({
-	    width: 428,
-	    height: 250,
-	    x: dimensions.width-428,
-	    y: dimensions.height-250,
+	    width: vidWidth,
+	    height: vidHeight,
+	    x: vidPos[0],
+	    y: vidPos[1],
 	    alwaysOnTop: true,
 	    focusable: false,
-	    transparent: true,
 	    frame: false,
 	    backgroundColor: '#000',
-	    titleBarStyle : 'hiddenInset',
-	    resizable: false
+	    resizable: false,
+	    movable: true
 	})
     } else {
 	mainWindow = new BrowserWindow({
@@ -174,6 +187,7 @@ app.on('ready', function() {
 		createWindow(false)
 	    }
 	    if (vidWindow != null) {
+		vidPos = vidWindow.getPosition()
 		vidWindow.destroy()
 		vidWindow = null;
 	    }
@@ -186,6 +200,8 @@ app.on('ready', function() {
 	    vid.playList = newPlaylist
 	    //mainWindow.setVisibleOnAllWorkspaces(false)
 	    if (vidWindow != null) {
+		console.log(vidWindow.getPosition())
+		vidPos = vidWindow.getPosition()
 		vidWindow.destroy()
 		vidWindow = null;
 	    }

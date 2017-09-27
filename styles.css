@@ -48,7 +48,7 @@
 
 .drag-bar:hover {
     padding: 0px 0px;
-    height:20px;
+/*    height:20px; */
     width:100%;
     background-color: #284a82;
     font-size: 0px;
