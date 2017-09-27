@@ -16,5 +16,6 @@
   CLOSED: [2017-09-27 mer. 18:17]
 Find a way to modify the zoom of the youtube window
 
-* TODO [#A] History
+* DONE [#A] History
+  CLOSED: [2017-09-27 mer. 18:42]
 Find a way to get back to the previous webpage when returning to youtube.

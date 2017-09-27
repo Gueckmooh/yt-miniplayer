@@ -15,8 +15,23 @@ var vid = {
     playList: 'PLG0dCKMzEcuzH1amINM-ptsvVEnZv-iyr'
 }
 const filter = {
-    urls: ['https://www.youtube.com/watch?v=*', 'https://www.youtube.com/',  'https://www.youtube.com/watch?time_continue=*', 'https://www.youtube.com/watch?list=*']
+    urls: ['https://www.youtube.com/watch?v=*',
+	   'https://www.youtube.com/',
+	   'https://www.youtube.com/watch?time_continue=*',
+	   'https://www.youtube.com/watch?list=*',
+	   'https://www.youtube.com/playlist*',
+	   'https://www.youtube.com/feed*',
+	   'https://www.youtube.com/channel*',
+	   'https://www.youtube.com/results*'
+	  ]
 }
+
+// playlist
+// feed
+// channel
+// results
+
+var youtube_url = 'https://www.youtube.com/'
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
@@ -68,7 +83,7 @@ function createWindow (isVid) {    // Create the browser window.
 	}
 	
     } else {
-	mainWindow.loadURL('https://www.youtube.com/');
+	mainWindow.loadURL(youtube_url);
     }
     //let contents = mainWindow.webContents
     //console.log(contents)
@@ -105,6 +120,7 @@ app.on('ready', function() {
     const session = electron.session
     session.defaultSession.webRequest.onBeforeSendHeaders(filter, (details, callback) => {
 	var newUrl = details.url
+	console.log(details)
 	console.log(newUrl)
 	var query = querystring.parse(newUrl.substr(30))
 	console.log(query)
@@ -123,6 +139,13 @@ app.on('ready', function() {
 	    newId = ''
 	}
 	if (newId == '') {
+	    if (query.v == undefined) {
+		if (newUrl.indexOf('&pbj') != -1) {
+		    var idpbj = newUrl.indexOf('&pbj')
+		    youtube_url = newUrl.substring(0, idpbj)
+		}
+	    }
+	    console.log('youtube url = ' + youtube_url)
 	    console.log('Je suis une patate')
 	    vid.id = null
 	    vid.playList = null
