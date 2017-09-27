@@ -35,8 +35,13 @@ var youtube_url = 'https://www.youtube.com/'
 
 var vidWidth = 428
 var vidHeight = 250
+var mainWidth = 800
+var mainHeight = 600
+
 
 var vidPos = null
+var mainPos = null
+
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
@@ -49,14 +54,18 @@ function createWindow (isVid) {    // Create the browser window.
     var mainScreen = screenElectron.getPrimaryDisplay();
     var dimensions = mainScreen.size;
     if (vidPos == null) {
-	console.log("lalalilala")
 	vidPos = [
 	    dimensions.width-vidWidth,
 	    dimensions.height-vidHeight
 	]
     }
-    console.log('vidPos = ' + vidPos)
-
+    if (mainPos == null) {
+	mainPos = [
+	    dimensions.width-mainWidth,
+	    dimensions.height-mainHeight
+	]
+    }
+    
     if (isVid) {
 	vidWindow = new BrowserWindow({
 	    width: vidWidth,
@@ -72,10 +81,10 @@ function createWindow (isVid) {    // Create the browser window.
 	})
     } else {
 	mainWindow = new BrowserWindow({
-	    width: 800,
-	    height: 600,
-	    x: dimensions.width-800,
-	    y: dimensions.height-600,
+	    width: mainWidth,
+	    height: mainHeight,
+	    x: mainPos[0],
+	    y: mainPos[1],
 	    alwaysOnTop: true,
 	    webPreferences: {
 		zoomFactor: 0.75
@@ -207,6 +216,9 @@ app.on('ready', function() {
 	    }
 	    createWindow(true)
 	    if (mainWindow != null) {
+		mainWidth = (mainWindow.getSize())[0]
+		mainHeight = (mainWindow.getSize())[1]
+		mainPos = mainWindow.getPosition()
 		mainWindow.destroy()
 		mainWindow = null
 	    }
