@@ -44,9 +44,30 @@ function createWindow (isVid) {    // Create the browser window.
     var mainScreen = screenElectron.getPrimaryDisplay();
     var dimensions = mainScreen.size;
     if (isVid) {
-	vidWindow = new BrowserWindow({width: 428, height: 250, x: dimensions.width-428, y: dimensions.height-250, alwaysOnTop: true, focusable: false, transparent: true, frame: false, backgroundColor: '#000'})
+	vidWindow = new BrowserWindow({
+	    width: 428,
+	    height: 250,
+	    x: dimensions.width-428,
+	    y: dimensions.height-250,
+	    alwaysOnTop: true,
+	    focusable: false,
+	    transparent: true,
+	    frame: false,
+	    backgroundColor: '#000',
+	    titleBarStyle : 'hiddenInset',
+	    resizable: false
+	})
     } else {
-	mainWindow = new BrowserWindow({width: 800, height: 600, x: dimensions.width-800, y: dimensions.height-600, alwaysOnTop: true,webPreferences: {zoomFactor: 0.75}})
+	mainWindow = new BrowserWindow({
+	    width: 800,
+	    height: 600,
+	    x: dimensions.width-800,
+	    y: dimensions.height-600,
+	    alwaysOnTop: true,
+	    webPreferences: {
+		zoomFactor: 0.75
+	    }
+	})
     }
     
     // and load the index.html of the app.

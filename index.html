@@ -26,13 +26,24 @@
 <!DOCTYPE html>
 <html>
   <HEAD>
+    <link rel="stylesheet" href="styles.css">
     <script type="text/javascript"  src="main.js" ></script>
     <script type="text/javascript" src="video.js"></script>
   </HEAD>
-  <body>
+  <body style="-webkit-app-region: drag">
     <!-- 1. The <iframe> (and video player) will replace this <div> tag. -->
-    <div id="player"></div>
-
+    <button class="button" 
+            onclick="window.open('', '_self', ''); window.close();"
+	    style="-webkit-app-region: no-drag">
+      &#10006;
+    </button>
+    <!--
+    <button class="drag-bar" 
+	    style="-webkit-app-region: drag">
+      e
+    </button>
+    -->
+    <div id="player" style="-webkit-app-region: no-drag" class="player"></div>
     <script
        type="text/javascript" src="video.js">
     </script>
