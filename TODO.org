@@ -1,0 +1,19 @@
+#+OPTIONS: ':nil *:t -:t ::t <:t H:3 \n:nil ^:t arch:headline
+#+OPTIONS: author:t broken-links:nil c:nil creator:nil
+#+OPTIONS: d:(not "LOGBOOK") date:t e:t email:nil f:t inline:t num:t
+#+OPTIONS: p:nil pri:nil prop:nil stat:t tags:t tasks:t tex:t
+#+OPTIONS: timestamp:t title:t toc:t todo:t |:t
+#+TITLE: TODOs
+#+DATE: <2017-09-27 mer.>
+#+AUTHOR: Gueckmooh
+#+EMAIL: 
+#+LANGUAGE: en
+#+SELECT_TAGS: export
+#+EXCLUDE_TAGS: noexport
+#+CREATOR: Emacs 24.5.1 (Org mode 9.0.9)
+
+* TODO [#B] Zoom
+Find a way to modify the zoom of the youtube window
+
+* TODO [#A] History
+Find a way to get back to the previous webpage when returning to youtube.
