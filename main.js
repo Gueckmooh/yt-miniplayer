@@ -38,6 +38,8 @@ var vidHeight = 250
 var mainWidth = 800
 var mainHeight = 600
 
+var vidZoom = 1
+
 
 var vidPos = null
 var mainPos = null
@@ -76,8 +78,11 @@ function createWindow (isVid) {    // Create the browser window.
 	    focusable: false,
 	    frame: false,
 	    backgroundColor: '#000',
-	    resizable: false,
-	    movable: true
+	    //resizable: false,
+	    movable: true,
+	    webPreferences: {
+		zoomFactor: vidZoom
+	    }
 	})
     } else {
 	mainWindow = new BrowserWindow({
@@ -90,6 +95,7 @@ function createWindow (isVid) {    // Create the browser window.
 		zoomFactor: 0.75
 	    }
 	})
+	
     }
     
     // and load the index.html of the app.
@@ -128,27 +134,21 @@ function createWindow (isVid) {    // Create the browser window.
     } else {
 	mainWindow.loadURL(youtube_url);
     }
-    //let contents = mainWindow.webContents
-    //console.log(contents)
+
+
+    if (vidWindow != null) {
+	vidWindow.on('resize', function () {
+	    setTimeout(function () {
+		var size = vidWindow.getSize();
+		vidWindow.setSize(size[0], parseInt(size[0] * 9 / 16));
+		var rat = size[0]/vidWidth
+		vidZoom = rat
+		vidWindow.webContents.setZoomFactor(rat)
+	    }, 0);
+	});
+    }
     
-    // Open the DevTools.
-    // mainWindow.webContents.openDevTools()
     
-    // Emitted when the window is closed.
-    /*
-    mainWindow.on('closed', function () {
-	// Dereference the window object, usually you would store windows
-	// in an array if your app supports multi windows, this is the time
-	// when you should delete the corresponding element.
-	mainWindow = null
-    })
-     vidWindow.on('closed', function () {
-	// Dereference the window object, usually you would store windows
-	// in an array if your app supports multi windows, this is the time
-	// when you should delete the corresponding element.
-	vidWindow = null
-    })
-    */
 }
 
 
@@ -197,6 +197,8 @@ app.on('ready', function() {
 	    }
 	    if (vidWindow != null) {
 		vidPos = vidWindow.getPosition()
+		vidWidth = (vidWindow.getSize())[0]
+		vidHeight = (vidWindow.getSize())[1]
 		vidWindow.destroy()
 		vidWindow = null;
 	    }
@@ -211,6 +213,8 @@ app.on('ready', function() {
 	    if (vidWindow != null) {
 		console.log(vidWindow.getPosition())
 		vidPos = vidWindow.getPosition()
+		vidWidth = (vidWindow.getSize())[0]
+		vidHeight = (vidWindow.getSize())[1]
 		vidWindow.destroy()
 		vidWindow = null;
 	    }
