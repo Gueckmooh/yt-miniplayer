@@ -12,7 +12,8 @@
 #+EXCLUDE_TAGS: noexport
 #+CREATOR: Emacs 24.5.1 (Org mode 9.0.9)
 
-* TODO [#B] Zoom
+* DONE [#B] Zoom
+  CLOSED: [2017-09-27 mer. 18:17]
 Find a way to modify the zoom of the youtube window
 
 * TODO [#A] History
