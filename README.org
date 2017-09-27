@@ -1,0 +1,35 @@
+#+OPTIONS: ':nil *:t -:t ::t <:t H:3 \n:nil ^:t arch:headline
+#+OPTIONS: author:t broken-links:nil c:nil creator:nil
+#+OPTIONS: d:(not "LOGBOOK") date:t e:t email:nil f:t inline:t num:t
+#+OPTIONS: p:nil pri:nil prop:nil stat:t tags:t tasks:t tex:t
+#+OPTIONS: timestamp:t title:t toc:t todo:t |:t
+#+TITLE: yt-miniplayer
+#+DATE: <2017-09-27 mer.>
+#+AUTHOR: Gueckmooh
+#+EMAIL: 
+#+LANGUAGE: en
+#+SELECT_TAGS: export
+#+EXCLUDE_TAGS: noexport
+#+CREATOR: Emacs 24.5.1 (Org mode 9.0.9)
+
+* What is this ?
+yt-miniplayer is an desktop application that enables you to watch youtube videos in the corner of your screen.
+It can be used at the same time of others applications. The app stay in foreground and is not focusable while watching video.
+
+You can find the last release [[https://github.com/Gueckmooh/yt-miniplayer/releases/tag/v1.0-beta][here]].
+
+* Install
+
+** Using prebuild
+You can find a prebuild version of the application [[https://github.com/Gueckmooh/yt-miniplayer/releases/tag/v1.0-beta][here]].
+It does not require to be installed or compiled. It does not require any other soft.
+
+** Using Node
+You will have to install node if it isn't installed on your system.
+You can find it [[https://nodejs.org/en/download/][here]].
+
+To run the app, you will need to open a terminal and type the following command in the application folder :
+#+BEGIN_SRC shell
+$ npm install
+$ npm start
+#+END_SRC
